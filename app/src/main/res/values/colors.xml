@@ -9,4 +9,5 @@
     <color name="accent_amber">#FFD54F</color>
     <color name="header_start">#3949AB</color>
     <color name="header_end">#0D1B3E</color>
+    <color name="time_accent">#3949AB</color>
 </resources>

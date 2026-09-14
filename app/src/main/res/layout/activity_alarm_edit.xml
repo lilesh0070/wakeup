@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
         app:navigationIcon="@drawable/ic_close"
         app:title="@string/edit_alarm" />
 
@@ -23,80 +25,132 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TimePicker
-                android:id="@+id/time_picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:timePickerMode="spinner" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/repeat_days"
-                android:textAppearance="?attr/textAppearanceTitleMedium" />
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chip_group"
+            <!-- Time picker card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:singleLine="false">
+                app:cardCornerRadius="22dp"
+                app:cardElevation="3dp">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_sun" style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Sun" android:checkable="true" />
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_mon" style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Mon" android:checkable="true" />
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_tue" style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Tue" android:checkable="true" />
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_wed" style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Wed" android:checkable="true" />
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_thu" style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Thu" android:checkable="true" />
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_fri" style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Fri" android:checkable="true" />
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_sat" style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Sat" android:checkable="true" />
-            </com.google.android.material.chip.ChipGroup>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="@string/label_hint"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/label_input"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.08"
+                        android:text="SET TIME"
+                        android:textColor="@color/time_accent"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TimePicker
+                        android:id="@+id/time_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:timePickerMode="spinner" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Repeat days card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/repeat_days"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:singleLine="false">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_sun" style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Sun" android:checkable="true" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_mon" style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Mon" android:checkable="true" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_tue" style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Tue" android:checkable="true" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_wed" style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Wed" android:checkable="true" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_thu" style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Thu" android:checkable="true" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_fri" style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Fri" android:checkable="true" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_sat" style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Sat" android:checkable="true" />
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Label card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="3dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="14dp"
+                    android:hint="@string/label_hint"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/label_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:paddingVertical="12dp"
+                android:layout_marginTop="22dp"
+                android:paddingVertical="14dp"
                 android:text="@string/save"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:cornerRadius="16dp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
