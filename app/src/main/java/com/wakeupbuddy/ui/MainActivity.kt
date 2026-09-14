@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener { showUpdateDialog() }
         binding.toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.action_share -> { showQrDialog(); true }
                 R.id.action_photos -> {
                     startActivity(Intent(this, GalleryActivity::class.java)); true
                 }
@@ -194,7 +195,6 @@ class MainActivity : AppCompatActivity() {
             .setTitle(R.string.update_title)
             .setMessage(getString(R.string.update_body) + "\n\nCurrent version: " + BuildConfig.VERSION_NAME)
             .setPositiveButton(R.string.update_now) { _, _ -> startInAppUpdate() }
-            .setNeutralButton(R.string.share_qr) { _, _ -> showQrDialog() }
             .setNegativeButton(R.string.close, null)
             .show()
     }

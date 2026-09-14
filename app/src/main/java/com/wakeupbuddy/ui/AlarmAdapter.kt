@@ -32,7 +32,7 @@ class AlarmAdapter(
     override fun onBindViewHolder(h: VH, position: Int) {
         val a = items[position]
         h.b.timeText.text = TimeUtils.formatTime(a.hour, a.minute)
-        h.b.daysText.text = TimeUtils.daysLabel(a.days)
+        h.b.daysText.text = TimeUtils.scheduleLabel(a)
         if (a.label.isBlank()) {
             h.b.labelText.visibility = View.GONE
         } else {

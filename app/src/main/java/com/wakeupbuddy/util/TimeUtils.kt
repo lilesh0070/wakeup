@@ -1,12 +1,21 @@
 package com.wakeupbuddy.util
 
 import com.wakeupbuddy.model.Alarm
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 object TimeUtils {
 
     /** Next trigger time in millis for this alarm relative to [now]. */
     fun nextTriggerMillis(alarm: Alarm, now: Long = System.currentTimeMillis()): Long {
+        // Specific one-time date
+        if (alarm.hasDate) {
+            val c = Calendar.getInstance()
+            c.set(alarm.dateY, alarm.dateM, alarm.dateD, alarm.hour, alarm.minute, 0)
+            c.set(Calendar.MILLISECOND, 0)
+            return c.timeInMillis
+        }
         val base = Calendar.getInstance().apply {
             timeInMillis = now
             set(Calendar.SECOND, 0)
@@ -64,6 +73,16 @@ object TimeUtils {
             Calendar.THURSDAY, Calendar.FRIDAY, Calendar.SATURDAY
         )
         return order.filter { days.contains(it) }.joinToString(", ") { dayNames[it] ?: "" }
+    }
+
+    /** Schedule description for a list row: a specific date, or the repeat days. */
+    fun scheduleLabel(alarm: Alarm): String {
+        if (alarm.hasDate) {
+            val c = Calendar.getInstance()
+            c.set(alarm.dateY, alarm.dateM, alarm.dateD)
+            return SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault()).format(c.time)
+        }
+        return daysLabel(alarm.days)
     }
 
     /** Human-readable "2h 15m" / "45m" text. */
