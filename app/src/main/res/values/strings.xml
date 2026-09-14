@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">WakeUp Buddy</string>
+
+    <!-- Main screen -->
+    <string name="add_alarm">Add alarm</string>
+    <string name="no_alarms">No alarms yet</string>
+    <string name="edit_alarm">Alarm</string>
+    <string name="proof_photos">Proof Photos</string>
+    <string name="alarm_deleted">Alarm deleted</string>
+    <string name="every_day">Every day</string>
+    <string name="once">Once</string>
+    <string name="your_alarms">Your alarms</string>
+    <string name="no_active_alarm">No active alarm — tap +</string>
+    <string name="add_first_alarm">+ Add your first alarm</string>
+    <string name="tap_plus">Tap the + button to add a new alarm</string>
+
+    <!-- Greetings -->
+    <string name="greeting_morning">Good morning 🌅</string>
+    <string name="greeting_afternoon">Good afternoon ☀️</string>
+    <string name="greeting_evening">Good evening 🌆</string>
+    <string name="greeting_night">Good night 🌙</string>
+
+    <!-- Edit screen -->
+    <string name="label_hint">Label (optional), e.g. Office</string>
+    <string name="save">Save</string>
+    <string name="repeat_days">Repeat</string>
+    <string name="alarm_saved">Alarm set</string>
+    <string name="delete_this_alarm">Delete this alarm?</string>
+
+    <!-- Alarm (wake) screen -->
+    <string name="wake_title">WAKE UP! 🌅</string>
+    <string name="wake_sub">Wash your face, then look at the camera with both eyes open to stop the alarm</string>
+    <string name="capture_dismiss">Capture selfie &amp; stop</string>
+    <string name="face_searching">Bring your face into the camera…</string>
+    <string name="face_detected">Face detected — keep both eyes open</string>
+    <string name="eyes_open_hint">Open both eyes fully…</string>
+    <string name="hold_steady">Hold steady…</string>
+    <string name="ready_capture">Ready ✓ — tap to capture</string>
+    <string name="verifying">Verifying…</string>
+    <string name="eyes_closed">Eyes look closed — open them and try again</string>
+    <string name="face_not_clear">Face not clear, please try again</string>
+    <string name="need_camera">Camera permission is required — the alarm won\'t stop without it</string>
+    <string name="grant_camera">Grant camera permission</string>
+    <string name="dismissed">Good morning! Alarm stopped ☀️</string>
+
+    <!-- Gallery -->
+    <string name="auto_delete_info">These photos auto-delete after 2 days (48h). Everything stays on this phone — nothing is uploaded.</string>
+    <string name="no_photos">No proof photos yet</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_photo_msg">Delete this photo?</string>
+    <string name="delete_all">Delete all</string>
+    <string name="delete_all_msg">Delete all proof photos?</string>
+
+    <!-- Update -->
+    <string name="update">Update</string>
+    <string name="update_title">Update WakeUp Buddy</string>
+    <string name="update_body">Download the latest version from GitHub. It opens in your browser — the app itself stays fully offline; the internet is used only to update.</string>
+    <string name="download_update">Download update</string>
+    <string name="share_qr">Share (QR)</string>
+    <string name="share_link">Share link</string>
+    <string name="open_github">Open GitHub</string>
+    <string name="close">Close</string>
+
+    <!-- Permissions -->
+    <string name="perm_title">Permissions needed</string>
+    <string name="perm_exact_alarm">Exact alarm — so it rings exactly on time</string>
+    <string name="perm_overlay">Display over other apps — to show over the lock screen</string>
+    <string name="perm_notification">Notifications — to show the alarm</string>
+    <string name="perm_battery">Turn off battery optimization — so the alarm is never killed</string>
+    <string name="open_settings">Open settings</string>
+    <string name="grant">Allow</string>
+    <string name="not_now">Not now</string>
+</resources>

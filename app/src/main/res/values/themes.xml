@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.WakeUpBuddy" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="Theme.WakeUpBuddy.Fullscreen" parent="Theme.WakeUpBuddy">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/alarm_bg</item>
+        <item name="android:statusBarColor">@color/alarm_bg</item>
+        <item name="android:navigationBarColor">@color/alarm_bg</item>
+    </style>
+</resources>

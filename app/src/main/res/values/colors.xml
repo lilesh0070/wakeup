@@ -1,0 +1,12 @@
+<resources>
+    <color name="ic_launcher_background">#3F51B5</color>
+    <color name="alarm_bg">#0D1B3E</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="text_secondary">#B0BEC5</color>
+    <color name="success">#43A047</color>
+    <color name="danger">#E53935</color>
+    <color name="warn">#FB8C00</color>
+    <color name="accent_amber">#FFD54F</color>
+    <color name="header_start">#3949AB</color>
+    <color name="header_end">#0D1B3E</color>
+</resources>
