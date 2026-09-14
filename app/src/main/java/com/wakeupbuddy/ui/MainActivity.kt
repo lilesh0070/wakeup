@@ -12,6 +12,7 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,12 +27,14 @@ import com.wakeupbuddy.BuildConfig
 import com.wakeupbuddy.Config
 import com.wakeupbuddy.QrUtil
 import com.wakeupbuddy.R
+import com.wakeupbuddy.Updater
 import com.wakeupbuddy.alarm.AlarmScheduler
 import com.wakeupbuddy.data.AlarmStore
 import com.wakeupbuddy.databinding.ActivityMainBinding
 import com.wakeupbuddy.model.Alarm
 import com.wakeupbuddy.photo.PhotoCleanup
 import com.wakeupbuddy.util.TimeUtils
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -185,13 +188,56 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    // ---- Update: direct download from GitHub (browser), plus a shareable QR ----
+    // ---- Update: download + install INSIDE the app (no browser). Net used only here. ----
     private fun showUpdateDialog() {
         AlertDialog.Builder(this)
             .setTitle(R.string.update_title)
             .setMessage(getString(R.string.update_body) + "\n\nCurrent version: " + BuildConfig.VERSION_NAME)
-            .setPositiveButton(R.string.download_update) { _, _ -> openUrl(Config.UPDATE_DOWNLOAD_URL) }
+            .setPositiveButton(R.string.update_now) { _, _ -> startInAppUpdate() }
             .setNeutralButton(R.string.share_qr) { _, _ -> showQrDialog() }
+            .setNegativeButton(R.string.close, null)
+            .show()
+    }
+
+    private fun startInAppUpdate() {
+        val v = LayoutInflater.from(this).inflate(R.layout.dialog_update, null)
+        val status = v.findViewById<TextView>(R.id.update_status)
+        val bar = v.findViewById<ProgressBar>(R.id.update_progress)
+        val dlg = AlertDialog.Builder(this).setView(v).setCancelable(false).create()
+        dlg.show()
+
+        Updater.run(this, BuildConfig.VERSION_NAME, object : Updater.Callback {
+            override fun onStatus(msg: String) { status.text = msg }
+            override fun onProgress(percent: Int) {
+                if (percent < 0) {
+                    bar.isIndeterminate = true
+                } else {
+                    bar.isIndeterminate = false
+                    bar.progress = percent
+                    status.text = getString(R.string.download_update) + "  " + percent + "%"
+                }
+            }
+            override fun onUpToDate(latest: String) {
+                dlg.dismiss()
+                Toast.makeText(this@MainActivity,
+                    getString(R.string.up_to_date) + " (" + latest + ")", Toast.LENGTH_LONG).show()
+            }
+            override fun onReadyToInstall(file: File) {
+                dlg.dismiss()
+                Updater.install(this@MainActivity, file)
+            }
+            override fun onError(msg: String) {
+                dlg.dismiss()
+                showUpdateErrorDialog(msg)
+            }
+        })
+    }
+
+    private fun showUpdateErrorDialog(msg: String) {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.update_failed)
+            .setMessage(msg + "\n\nYou can also download it in your browser.")
+            .setPositiveButton(R.string.open_in_browser) { _, _ -> openUrl(Config.UPDATE_DOWNLOAD_URL) }
             .setNegativeButton(R.string.close, null)
             .show()
     }

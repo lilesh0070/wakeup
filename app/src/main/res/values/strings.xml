@@ -55,8 +55,13 @@
     <!-- Update -->
     <string name="update">Update</string>
     <string name="update_title">Update WakeUp Buddy</string>
-    <string name="update_body">Download the latest version from GitHub. It opens in your browser — the app itself stays fully offline; the internet is used only to update.</string>
-    <string name="download_update">Download update</string>
+    <string name="update_body">Downloads and installs the latest version inside the app — no browser needed. The internet is used only to update; the alarm itself works fully offline.</string>
+    <string name="update_now">Update now</string>
+    <string name="download_update">Downloading</string>
+    <string name="checking_updates">Checking for updates…</string>
+    <string name="up_to_date">You\'re already on the latest version</string>
+    <string name="update_failed">Update failed</string>
+    <string name="open_in_browser">Open in browser</string>
     <string name="share_qr">Share (QR)</string>
     <string name="share_link">Share link</string>
     <string name="open_github">Open GitHub</string>
